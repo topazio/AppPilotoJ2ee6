@@ -20,7 +20,7 @@ public class ClienteFaces {
 	
 
 	public ClienteFaces(){
-		
+		System.out.println("testando....");
 	}
 	
 	@PostConstruct
