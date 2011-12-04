@@ -26,6 +26,7 @@ public class ClienteFaces {
 	@PostConstruct
 	private void inicializar(){
 		this.clienteModel = new ClienteModel();
+		System.out.println("inicializar...");
 	}
 	
 	
