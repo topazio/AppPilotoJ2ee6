@@ -21,7 +21,7 @@ public class ClienteBS {
     
     
     public void inserir(ClienteModel model){
-    	System.out.println("Cliente -> "+model.getNome());
+    	System.out.println("Cliente xx-> "+model.getNome());
     }
  
 }
