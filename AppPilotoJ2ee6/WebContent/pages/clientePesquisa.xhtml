@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:rich="http://richfaces.org/rich"
+				xmlns:a4j="http://richfaces.org/a4j">
+	
+			<rich:messages showDetail="true"/>
+			<h:panelGrid columns="1" styleClass="largura40">
+				<h:outputLabel value="Nome" for="nomePesquisa"/>
+				<h:inputText id="nomePesquisa"  value="#{clientePesquisaFaces.clienteModel.nome}" styleClass="largura100"/>
+				<h:panelGrid columns="2">
+					<a4j:commandButton value="Pesquisar" action="#{clientePesquisaFaces.findEvent}"/>
+					<a4j:commandButton value="Limpar" action="#{clientePesquisaFaces.limparPesquisa}"/>
+				</h:panelGrid>
+				</h:panelGrid>
+				
+				<a4j:outputPanel layout="block" styleClass="largura100" id="opGrid">
+				
+				<rich:dataTable  id="grid" rows="10" value="#{clientePesquisaFaces.clientes}" var="cliente" styleClass="largura100">
+					
+					<rich:column style="width:90%">
+						<f:facet name="header">
+							Nome
+						</f:facet>
+						<h:outputText value="#{cliente.nome}"/>
+					</rich:column>
+					
+					<rich:column style="width:5%">
+						<f:facet name="header">
+							Editar
+						</f:facet>
+						<div align="center">
+						<h:commandLink  style="border:0px" action="#{clienteFaces.detailEvent}" >
+							<f:setPropertyActionListener target="#{clienteFaces.clienteModel.id}" value="#{cliente.id}"/>
+							<h:graphicImage style="border:0px" value="/resources/images/edit.png" alt="E"/>
+						</h:commandLink>
+						</div>
+					</rich:column>
+					
+					<rich:column style="width:5%">
+						<f:facet name="header">
+							Excluir
+						</f:facet>
+						<div align="center">
+						<h:commandLink style="border:0px" action="#{clienteFaces.deleteEvent}" onclick="return confirm('Deseja realmente excluir?')">
+							<f:setPropertyActionListener target="#{clienteFaces.clienteModel.id}" value="#{cliente.id}"/>
+							<h:graphicImage style="border:0px" value="/resources/images/delete.png" alt="E"/> 
+						</h:commandLink>
+						</div>
+					</rich:column>
+					
+					<f:facet name="footer">
+						<rich:dataScroller id="dataScroller" for="grid"  render="grid"/>
+					</f:facet>
+					
+					</rich:dataTable>
+				
+				</a4j:outputPanel>
+			
+
+</ui:composition>

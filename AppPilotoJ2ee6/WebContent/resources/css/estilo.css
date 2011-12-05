@@ -1,0 +1,49 @@
+@CHARSET "ISO-8859-1";
+
+.largura100 {
+	width: 100%;
+}
+
+.largura90 {
+	width: 90%;
+}
+
+.largura80 {
+	width: 80%;
+}
+
+.largura70 {
+	width: 70%;
+}
+
+.largura60 {
+	width: 60%;
+}
+
+.largura50 {
+	width: 50%;
+}
+
+.largura40 {
+	width: 40%;
+}
+
+.largura30 {
+	width: 30%;
+}
+
+.largura25 {
+	width: 25%;
+}
+
+.largura20 {
+	width: 20%;
+}
+
+.largura10 {
+	width: 10%;
+}
+
+.largura5 {
+	width: 5%;
+}

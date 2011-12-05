@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Cadastro Cliente</title>
+	<link href="#{request.contextPath}/resources/css/estilo.css" type="text/css" rel="stylesheet" />
+</h:head>
+<h:body>
+
+	<h:form prependId="false" id="form">
+	
+		<rich:tabPanel id="tabCliente" switchType="client" >
+			<rich:tab title="Cadastro" name="cadastro" header="Cadastro">
+			<rich:messages showDetail="true"/>
+			<h:panelGrid columns="1" styleClass="largura40">
+				<h:outputLabel value="Nome" for="nome"/>
+				<h:inputText styleClass="largura100" id="nome" value="#{clienteCadastroFaces.clienteModel.nome}" />
+				
+				<h:outputLabel value="Tipo de cliente" for="smTipoCliente"/>
+				<h:selectOneMenu id="smTipoCliente" styleClass="largura50" value="#{clienteCadastroFaces.clienteModel.tipoClienteModel.id}">
+					<f:selectItem itemLabel="Selecione" itemValue=""/>
+					<f:selectItems value="#{clienteFaces.comboTipoCliente}"/> 
+				</h:selectOneMenu>
+				
+				<h:outputLabel for="sbFlagAtivo" value="Ativo?"/>
+				<h:selectBooleanCheckbox id="sbFlagAtivo" value="#{clienteCadastroFaces.clienteModel.flagAtivo}"/>
+				
+				<h:panelGrid columns="2">
+					<a4j:commandButton value="Inserir" action="#{clienteCadastroFaces.insertEvent}"  rendered="#{!clienteCadastroFaces.alterar}"/>
+					<a4j:commandButton value="Alterar" action="#{clienteCadastroFaces.updateEvent}" rendered="#{clienteCadastroFaces.alterar}" />
+					<a4j:commandButton value="Limpar" action="#{clienteCadastroFaces.limpar}"/>
+				</h:panelGrid>
+			</h:panelGrid>
+				
+			</rich:tab>
+			<rich:tab title="Pesquisa" name="pesquisa" header="Pesquisa">
+				<ui:include src="/pages/clientePesquisa.xhtml" />
+			</rich:tab>
+		</rich:tabPanel>
+
+	</h:form>
+
+
+</h:body>
+
+</html>
