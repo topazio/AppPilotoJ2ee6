@@ -22,6 +22,7 @@ public class ClienteBS {
 	
     public ClienteBS() {
         this.clienteDAO = new ClienteDAO();
+        //isso eh um teste
     }
     
     
